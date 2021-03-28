@@ -21,11 +21,11 @@ cmake --build .
 #### Install
 sudo make install
 
-### Install ORB-SLAM
-git clone https://github.com/fsisel/ORB_SLAM2.git
-cd ORB_SLAM2
-chmod +x build.sh
-./build.sh
+### Install ORB-SLAM  
+git clone https://github.com/fsisel/ORB_SLAM2.git  
+cd ORB_SLAM2  
+chmod +x build.sh  
+./build.sh  
 
 ### Test the original ORB-SLAM 2 without ROS
 cd ~/formula_student_ws/src  
@@ -47,11 +47,13 @@ roscore
 Terminal 2  
 source /opt/ros/noetic/setup.bash  
 export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:~/ORB_SLAM2/Examples/ROS  
-cd ~/ORB_SLAM2  
+cd ~/ORB_SLAM2
+#### Run the following (one single command)
 rosrun ORB_SLAM2 Stereo Vocabulary/ORBvoc.txt ~/formula_student_ws/src/datasets/calibration/camera_calibration.yaml false  
 
 Terminal 3  
-source /opt/ros/noetic/setup.bash  
+source /opt/ros/noetic/setup.bash
+#### Run the following (one single command)
 rosbag play --pause ~/formula/student_ws/src/datasets/visual_slam/easy_track.bag  /fsds/camera/cam1:=/camera/left/image_raw  /fsds/camera/cam2:=/camera/right/image_raw  
 
 When two windows pop-up you may press 'SPACE' on Terminal 3 to play the bag.
