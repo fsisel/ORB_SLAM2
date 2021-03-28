@@ -40,16 +40,16 @@ chmod +x build_ros.sh
 ./build_ros.sh
 
 #### Open 3 tabs on the terminal and run the following command at each tab:
-(Terminal 1)
+Terminal 1
 source /opt/ros/noetic/setup.bash
 roscore 
 
-(Terminal 2) 
+Terminal 2
 source /opt/ros/noetic/setup.bash
 export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:~/ORB_SLAM2/Examples/ROS
 cd ~/ORB_SLAM2
 rosrun ORB_SLAM2 Stereo Vocabulary/ORBvoc.txt ~/formula_student_ws/src/datasets/calibration/camera_calibration.yaml false
 
-(Terminal 3)
+Terminal 3
 source /opt/ros/noetic/setup.bash
 rosbag play --pause ~/formula/student_ws/src/datasets/visual_slam/easy_track.bag  /fsds/camera/cam1:=/camera/left/image_raw  /fsds/camera/cam2:=/camera/right/image_raw
