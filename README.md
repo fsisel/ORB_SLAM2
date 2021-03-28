@@ -1,9 +1,9 @@
 # ORB-SLAM2 for Formula Student driverless
 
-## Install Eigen3
+### Install Eigen3
 Required by g2o (see below). Download and install instructions can be found at: http://eigen.tuxfamily.org. Required at least 3.1.0.
 
-## Install Pangolin
+### Install Pangolin
 Follow the instructions in the following link: https://github.com/stevenlovegrove/Pangolin
 
 ### Install OpenCV
@@ -21,7 +21,7 @@ cmake --build .
 #### Install
 sudo make install
 
-### ORB-SLAM
+### Install ORB-SLAM
 git clone https://github.com/fsisel/ORB_SLAM2.git
 cd ORB_SLAM2
 chmod +x build.sh
@@ -31,15 +31,15 @@ chmod +x build.sh
 cd ~/formula_student_ws/src
 git clone https://github.com/fsisel/datasets
 cd ~/ORB_SLAM2
-./Examples/Stereo/stereo_euroc Vocabulary/ORBvoc.txt Examples/Stereo/EuRoC.yaml ~/formula_student_ws/src/datasets/visual_slam/mav0/cam0/data ~/formula_student_ws/src/datasets/visual_slam/mav0/cam1/data Examples/Stereo/EuRoC_TimeStamps/MH01.txt
+./Examples/Stereo/stereo_euroc Vocabulary/ORBvoc.txt Examples/Stereo/EuRoC.yaml ~/formula_student_ws/src/datasets/visual_slam/mav0/cam0/data
+~/formula_student_ws/src/datasets/visual_slam/mav0/cam1/data Examples/Stereo/EuRoC_TimeStamps/MH01.txt
 
 ### Test ORB-SLAM 2 with the race car
 export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:~/ORB_SLAM2/Examples/ROS
 chmod +x build_ros.sh
 ./build_ros.sh
 
-### Open 3 tabs on the terminal and run the following command at each tab:
-
+#### Open 3 tabs on the terminal and run the following command at each tab:
 (Terminal 1)
 source /opt/ros/noetic/setup.bash
 roscore 
