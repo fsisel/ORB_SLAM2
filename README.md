@@ -6,42 +6,50 @@ Required by g2o (see below). Download and install instructions can be found at: 
 ## Install Pangolin
 Follow the instructions in the following link: https://github.com/stevenlovegrove/Pangolin
 
-## Installl OpenCV
-### Install minimal prerequisites (Ubuntu 18.04 as reference)
+### Install OpenCV
+#### Install minimal prerequisites (Ubuntu 18.04 as reference)
 sudo apt update && sudo apt install -y cmake g++ wget unzip
-### Download and unpack sources
+#### Download and unpack sources
 wget -O opencv.zip https://github.com/opencv/opencv/archive/master.zip
 unzip opencv.zip
-### Create build directory
+#### Create build directory
 mkdir -p build && cd build
-### Configure
+#### Configure
 cmake  ../opencv-master
-### Build
+#### Build
 cmake --build .
-### Install
+#### Install
 sudo make install
 
-## ORB-SLAM
-git clone https://github.com/Windfisch/ORB_SLAM2.git
+### ORB-SLAM
+git clone https://github.com/fsisel/ORB_SLAM2.git
 cd ORB_SLAM2
 chmod +x build.sh
 ./build.sh
 
-## Test without ROS
+### Test the original ORB-SLAM 2 without ROS
 cd ~/formula_student_ws/src
-mkdir -p datasets
-cd datasets
-wget http://robotics.ethz.ch/~asl-datasets/ijrr_euroc_mav_dataset/machine_hall/MH_01_easy/MH_01_easy.zi
+git clone https://github.com/fsisel/datasets
 cd ~/ORB_SLAM2
-./Examples/Stereo/stereo_euroc Vocabulary/ORBvoc.txt Examples/Stereo/EuRoC.yaml ~/formula_student_ws/src/datasets/mav0/cam0/data ~/formula_student_ws/src/datasets/mav0/cam1/data Examples/Stereo/EuRoC_TimeStamps/MH01.txt
+./Examples/Stereo/stereo_euroc Vocabulary/ORBvoc.txt Examples/Stereo/EuRoC.yaml ~/formula_student_ws/src/datasets/visual_slam/mav0/cam0/data ~/formula_student_ws/src/datasets/visual_slam/mav0/cam1/data Examples/Stereo/EuRoC_TimeStamps/MH01.txt
 
-## Test with ROS
+### Test ORB-SLAM 2 with the race car
 export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:~/ORB_SLAM2/Examples/ROS
 chmod +x build_ros.sh
 ./build_ros.sh
-cd ~/formula_student_ws/src/datasets
-wget http://robotics.ethz.ch/~asl-datasets/ijrr_euroc_mav_dataset/vicon_room1/V1_01_easy/V1_01_easy.bag
-Follow the instructions here: https://github.com/Windfisch/ORB_SLAM2#running-stereo-node
 
-## Test with a ROS Bag record on the Formula Student Driverless Simulator
+### Open 3 tabs on the terminal and run the following command at each tab:
 
+(Terminal 1)
+source /opt/ros/noetic/setup.bash
+roscore 
+
+(Terminal 2) 
+source /opt/ros/noetic/setup.bash
+export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:~/ORB_SLAM2/Examples/ROS
+cd ~/ORB_SLAM2
+rosrun ORB_SLAM2 Stereo Vocabulary/ORBvoc.txt ~/formula_student_ws/src/datasets/calibration/camera_calibration.yaml false
+
+(Terminal 3)
+source /opt/ros/noetic/setup.bash
+rosbag play --pause ~/formula/student_ws/src/datasets/visual_slam/easy_track.bag  /fsds/camera/cam1:=/camera/left/image_raw  /fsds/camera/cam2:=/camera/right/image_raw
