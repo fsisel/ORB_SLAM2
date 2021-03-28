@@ -27,7 +27,9 @@ cd ORB_SLAM2
 chmod +x build.sh  
 ./build.sh  
 
-### Test the original ORB-SLAM 2 without ROS  
+### Test the original ORB-SLAM 2 without ROS 
+
+#### Download datasets and calibration files
 cd ~/formula_student_ws/src  
 mkdir -p datasets  
 cd datasets  
@@ -37,6 +39,9 @@ cd visual_slam
 wget http://robotics.ethz.ch/~asl-datasets/ijrr_euroc_mav_dataset/machine_hall/MH_01_easy/MH_01_easy.zip  
 unzip MH_01_easy.zip  
 rm -rf MH_01_easy.zip  
+
+#### Run ORB_SLAM2
+cd ~/ORB_SLAM2  
 #### Run the following (one single command)  
 ./Examples/Stereo/stereo_euroc Vocabulary/ORBvoc.txt Examples/Stereo/EuRoC.yaml ~/formula_student_ws/src/datasets/visual_slam/mav0/cam0/data ~/formula_student_ws/src/datasets/visual_slam/mav0/cam1/data Examples/Stereo/EuRoC_TimeStamps/MH01.txt  
 
