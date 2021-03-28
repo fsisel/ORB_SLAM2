@@ -31,6 +31,7 @@ chmod +x build.sh
 cd ~/formula_student_ws/src  
 mkdir -p datasets  
 cd datasets  
+git clone https://github.com/fsisel/calibration  
 mkdir -p visual_slam  
 cd visual_slam  
 wget http://robotics.ethz.ch/~asl-datasets/ijrr_euroc_mav_dataset/machine_hall/MH_01_easy/MH_01_easy.zip  
