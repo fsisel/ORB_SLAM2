@@ -27,16 +27,16 @@ cd ORB_SLAM2
 chmod +x build.sh  
 ./build.sh  
 
-### Test the original ORB-SLAM 2 without ROS
-cd ~/formula_student_ws/src
-mkdir -p datasets
-cd datasets
-mkdir -p visual_slam
-cd visual_slam
-wget http://robotics.ethz.ch/~asl-datasets/ijrr_euroc_mav_dataset/machine_hall/MH_01_easy/MH_01_easy.zip
-unzip MH_01_easy.zip
-rm -rf MH_01_easy.zip
-#### Run the following (one single command)
+### Test the original ORB-SLAM 2 without ROS  
+cd ~/formula_student_ws/src  
+mkdir -p datasets  
+cd datasets  
+mkdir -p visual_slam  
+cd visual_slam  
+wget http://robotics.ethz.ch/~asl-datasets/ijrr_euroc_mav_dataset/machine_hall/MH_01_easy/MH_01_easy.zip  
+unzip MH_01_easy.zip  
+rm -rf MH_01_easy.zip  
+#### Run the following (one single command)  
 ./Examples/Stereo/stereo_euroc Vocabulary/ORBvoc.txt Examples/Stereo/EuRoC.yaml ~/formula_student_ws/src/datasets/visual_slam/mav0/cam0/data ~/formula_student_ws/src/datasets/visual_slam/mav0/cam1/data Examples/Stereo/EuRoC_TimeStamps/MH01.txt  
 
 ### Test ORB-SLAM 2 with the race car
@@ -45,7 +45,7 @@ chmod +x build_ros.sh
 ./build_ros.sh  
 
 #### Download race car ROS bag
-download very_easy_track.bag from IFS Cloud -> Grupos Técnicos -> Grupo VII - Driverless -> Datasets
+download very_easy_track.bag from IFS Cloud -> Grupos Técnicos -> Grupo VII - Driverless -> Datasets  
 put the ROS bag in ~/formula_student_ws/src/datasets/visual_slam
 
 #### Open 3 tabs on the terminal and run the following command at each tab: 
