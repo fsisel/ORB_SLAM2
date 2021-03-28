@@ -28,28 +28,28 @@ chmod +x build.sh
 ./build.sh
 
 ### Test the original ORB-SLAM 2 without ROS
-cd ~/formula_student_ws/src\
-git clone https://github.com/fsisel/datasets\
-cd ~/ORB_SLAM2\
-./Examples/Stereo/stereo_euroc Vocabulary/ORBvoc.txt Examples/Stereo/EuRoC.yaml ~/formula_student_ws/src/datasets/visual_slam/mav0/cam0/data\
-~/formula_student_ws/src/datasets/visual_slam/mav0/cam1/data Examples/Stereo/EuRoC_TimeStamps/MH01.txt\
+cd ~/formula_student_ws/src \
+git clone https://github.com/fsisel/datasets \
+cd ~/ORB_SLAM2 \
+./Examples/Stereo/stereo_euroc Vocabulary/ORBvoc.txt Examples/Stereo/EuRoC.yaml ~/formula_student_ws/src/datasets/visual_slam/mav0/cam0/data \
+~/formula_student_ws/src/datasets/visual_slam/mav0/cam1/data Examples/Stereo/EuRoC_TimeStamps/MH01.txt \
 
 ### Test ORB-SLAM 2 with the race car
-export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:~/ORB_SLAM2/Examples/ROS\
-chmod +x build_ros.sh\
-./build_ros.sh\
+export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:~/ORB_SLAM2/Examples/ROS \
+chmod +x build_ros.sh \
+./build_ros.sh \
 
-#### Open 3 tabs on the terminal and run the following command at each tab:\
-Terminal 1\
-source /opt/ros/noetic/setup.bash\
-roscore\
+#### Open 3 tabs on the terminal and run the following command at each tab: \
+Terminal 1 \
+source /opt/ros/noetic/setup.bash \
+roscore \
 
-Terminal 2\
-source /opt/ros/noetic/setup.bash\
-export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:~/ORB_SLAM2/Examples/ROS\
-cd ~/ORB_SLAM2\
-rosrun ORB_SLAM2 Stereo Vocabulary/ORBvoc.txt ~/formula_student_ws/src/datasets/calibration/camera_calibration.yaml false\
+Terminal 2 \
+source /opt/ros/noetic/setup.bash \
+export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:~/ORB_SLAM2/Examples/ROS \
+cd ~/ORB_SLAM2 \
+rosrun ORB_SLAM2 Stereo Vocabulary/ORBvoc.txt ~/formula_student_ws/src/datasets/calibration/camera_calibration.yaml false \
 
-Terminal 3\
-source /opt/ros/noetic/setup.bash\
-rosbag play --pause ~/formula/student_ws/src/datasets/visual_slam/easy_track.bag  /fsds/camera/cam1:=/camera/left/image_raw  /fsds/camera/cam2:=/camera/right/image_raw\
+Terminal 3 \
+source /opt/ros/noetic/setup.bash \
+rosbag play --pause ~/formula/student_ws/src/datasets/visual_slam/easy_track.bag  /fsds/camera/cam1:=/camera/left/image_raw  /fsds/camera/cam2:=/camera/right/image_raw \
